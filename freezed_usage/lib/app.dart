@@ -9,9 +9,7 @@ class App extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SafeArea(
-        child: CounterView()
-      ),
+      home: CounterView(),
     );
   }
 }
