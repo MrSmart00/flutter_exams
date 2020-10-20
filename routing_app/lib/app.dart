@@ -9,8 +9,6 @@ class App extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      // home: HomeView(),
-      // home: CounterView(),
       routes: <String, WidgetBuilder> {
         "/": (BuildContext context) => HomeView(),
         "/counter": (BuildContext context) => CounterView(),
