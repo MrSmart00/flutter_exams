@@ -120,6 +120,10 @@
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 !**/dev/ci/**/Gemfile.lock
 
+# Build Runner generated files.
+**/*.g.dart
+**/*.chopper.dart
+
 # Freezed package generated files.
 **/*.freezed.dart
-**/*.g.dart
+
