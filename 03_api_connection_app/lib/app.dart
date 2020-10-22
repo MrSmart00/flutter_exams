@@ -1,5 +1,6 @@
 import 'package:chopper/chopper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 
@@ -69,24 +70,28 @@ class _MyHomePageState extends State<MyHomePage> {
 
   // ignore: non_constant_identifier_names
   Widget _Item(Content content) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(width: 2.0),
-      ),
-      child: Column(
-        children: [
-          Image.network(content.thumbnail.toString()),
-          Text(
-            content.title,
-            style: TextStyle(
-              fontSize: 16,
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10.0),
+        child: Column(
+          children: [
+            Image.network(
+              content.thumbnail.toString(),
+              fit: BoxFit.fill,
             ),
-          ),
-          Text(
-            DateFormat('yyyy/MM/dd(E) HH:mm', "ja_JP")
-                .format(content.createdAt),
-          ),
-        ],
+            Text(
+              content.title,
+              style: TextStyle(
+                fontSize: 16,
+              ),
+            ),
+            Text(
+              DateFormat('yyyy/MM/dd(E) HH:mm', "ja_JP")
+                  .format(content.createdAt),
+            ),
+          ],
+        ),
       ),
     );
   }
