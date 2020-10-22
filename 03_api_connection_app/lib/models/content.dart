@@ -14,35 +14,10 @@ class Content {
 }
 
 @JsonSerializable(nullable: false)
-class ContentList<T> {
+class ContentList {
   @JsonKey(name: 'contents')
-  @_Converter()
-  final List<T> values;
+  final List<Content> values;
   ContentList(this.values);
 
-  factory ContentList.fromJson(Map<String, dynamic> json) => _$ContentListFromJson<T>(json);
-}
-
-class _Converter<T> implements JsonConverter<T, Object> {
-  const _Converter();
-
-  @override
-  T fromJson(Object json) {
-    if (Content.fromJson(json) != null) {
-
-    }
-    if (json is Map<String, dynamic> &&
-        json.containsKey('thumbnail') &&
-        json.containsKey('title') &&
-        json.containsKey("created_at")
-    ) {
-      return Content.fromJson(json) as T;
-    }
-    return json as T;
-  }
-
-  @override
-  Object toJson(T object) {
-    return object;
-  }
+  factory ContentList.fromJson(Map<String, dynamic> json) => _$ContentListFromJson(json);
 }

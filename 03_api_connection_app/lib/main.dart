@@ -1,8 +1,6 @@
+import 'package:api_connection_app/api/repository.dart';
+import 'package:chopper/chopper.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-
-import 'models/content.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,8 +9,6 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    testConnection();
-
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -22,14 +18,6 @@ class MyApp extends StatelessWidget {
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
-}
-
-void testConnection() {
-  http.get("https://run.mocky.io/v3/e71ba3ef-0bfb-44c1-b9e8-25d35067d726").then((response) {
-    var decoded = jsonDecode(response.body);
-    var contents = ContentList.fromJson(decoded);
-    print(contents);
-  });
 }
 
 class MyHomePage extends StatefulWidget {
@@ -49,8 +37,21 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void testConnection() {
+    final ChopperClient client = ChopperClient(
+      baseUrl: "https://run.mocky.io",
+    );
+
+    final repository = Repository(client);
+    var result = repository.fetchContents();
+    print(result);
+  }
+
+
   @override
   Widget build(BuildContext context) {
+    testConnection();
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
