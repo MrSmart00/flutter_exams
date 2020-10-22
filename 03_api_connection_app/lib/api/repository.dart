@@ -14,6 +14,7 @@ class Repository {
     final Response response = await service.getContents();
     if (response.isSuccessful) {
       var decoded = jsonDecode(response.body);
+      print(decoded);
       return ContentList.fromJson(decoded).values;
     } else {
       return [];
