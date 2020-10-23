@@ -66,41 +66,50 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  // ignore: non_constant_identifier_names
   Widget _Item(Content content) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: Colors.grey,
-            width: 0.5,
-          ),
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(10.0),
-          child: Column(
-            children: [
-              AspectRatio(
+      padding: const EdgeInsets.fromLTRB(20, 10, 20, 40),
+      child: Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.grey,
+                width: 0.5,
+              ),
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10.0),
+              child: AspectRatio(
                 aspectRatio: 1,
                 child: Image.network(
                   content.thumbnail.toString(),
                   fit: BoxFit.cover,
                 ),
               ),
-              Text(
-                content.title,
-                style: TextStyle(
-                  fontSize: 16,
-                ),
-              ),
-              Text(
-                DateFormat('yyyy/MM/dd(E) HH:mm').format(content.createdAt),
-              ),
-            ],
+            ),
           ),
-        ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+            child: Text(
+              content.title,
+              style: TextStyle(
+                fontSize: 16,
+              ),
+            ),
+          ),
+          SizedBox(
+            width: double.infinity,
+            child: Text(
+              DateFormat('MM/dd HH:mm').format(content.createdAt),
+              style: TextStyle(
+                color: Colors.grey,
+              ),
+              textAlign: TextAlign.right,
+            ),
+          ),
+        ],
       ),
     );
   }
