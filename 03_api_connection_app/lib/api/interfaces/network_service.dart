@@ -6,6 +6,6 @@ part 'network_service.chopper.dart';
 abstract class NetworkService extends ChopperService {
   static NetworkService create(ChopperClient client) => _$NetworkService(client);
 
-  @Get(path: "/cad0b042-7b49-4daa-b75c-86472d58dbff")
+  @Get(path: "/802d3b9b-0479-4fef-a9b9-d6f6726ac70e")
   Future<Response> getContents();
 }
